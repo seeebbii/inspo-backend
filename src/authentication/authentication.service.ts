@@ -1,4 +1,8 @@
-import { Injectable } from '@nestjs/common';
+import { Injectable, Logger } from '@nestjs/common';
 
 @Injectable()
-export class AuthenticationService {}
+export class AuthenticationService {
+    private logger = new Logger('AuthenticationService');
+    constructor(
+    ) { }
+}
