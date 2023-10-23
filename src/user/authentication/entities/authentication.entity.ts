@@ -1,4 +1,5 @@
-import { BaseEntity, Column, Entity, PrimaryGeneratedColumn, CreateDateColumn, UpdateDateColumn, Unique } from "typeorm";
+import { Address } from "src/location/address/entities/address.entity";
+import { BaseEntity, Column, Entity, PrimaryGeneratedColumn, CreateDateColumn, UpdateDateColumn, Unique, OneToMany } from "typeorm";
 
 @Entity()
 @Unique(['email', 'contact_number', 'complete_number'])
@@ -44,6 +45,8 @@ export class Authentication extends BaseEntity {
     is_active: boolean;
 
 
+    @OneToMany(() => Address, address => address.user, { eager: true })
+    address: Address[];
 
 
     @CreateDateColumn({ type: "timestamp", default: () => "CURRENT_TIMESTAMP(6)" })
